@@ -1,3 +1,4 @@
+package Set;
 import java.util.Random;
 
 public class main {
@@ -10,11 +11,10 @@ public class main {
 		final int maxval = 100;
 		
 		Random rand = new Random();
-
+		
 		IntSet S = new IntSetList();
 	    
 		S.intSetImp(m, maxval);
-		
 		
 		while (S.size() < m)
 			S.insert(rand.nextInt(maxval));

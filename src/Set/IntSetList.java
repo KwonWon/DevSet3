@@ -1,3 +1,4 @@
+package Set;
 import java.util.Comparator;
 import java.util.LinkedList;
 
@@ -9,9 +10,13 @@ public class IntSetList implements IntSet {
 	
 	private LinkedList<Integer> intList = new LinkedList<Integer>();
 	
-	private int length;
 	private int maxelems;
 	private int maxval;
+	
+	public IntSetList() {
+		maxelems = 0;
+		maxval = 0;
+	}
 	
 	@Override
 	public void intSetImp(int maxelems, int maxval) {
@@ -27,7 +32,7 @@ public class IntSetList implements IntSet {
 	@Override
 	public void insert(int element) {
 		// TODO Auto-generated method stub
-		if(size() < maxelems) {
+		if(size() < maxelems && element <= maxval) {
 			intList.add(element);
 		}else {
 			

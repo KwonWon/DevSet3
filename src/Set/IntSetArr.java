@@ -1,3 +1,4 @@
+package Set;
 public class IntSetArr implements IntSet {
 	private int[] array;
 	private int length;

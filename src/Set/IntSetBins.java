@@ -28,23 +28,23 @@ public class IntSetBins implements IntSet {
    @Override
    public void insert(int element) {
       // TODO Auto-generated method stub
-     if(this.maxval >= element && maxelems > length) { 
-         if(!map.containsKey(element/10)) {
-            ArrayList<Integer> list = new ArrayList<>();
-            list.add(element);
-            map.put(element/10, list);
-            this.length++;
-         }
-         else {
-            ArrayList<Integer> list = map.get(element/10);
-            if(!list.contains(element)) {
-                list.add(element);
-                map.remove(element/10);
-                map.put(element/10, list);
-                this.length++;
-            }
-         }
-     }
+	  if(this.maxval >= element && maxelems > length) { 
+	      if(!map.containsKey(element/10)) {
+	         ArrayList<Integer> list = new ArrayList<>();
+	         list.add(element);
+	         map.put(element/10, list);
+	         this.length++;
+	      }
+	      else {
+	         ArrayList<Integer> list = map.get(element/10);
+	         if(!list.contains(element)) {
+	             list.add(element);
+	             map.remove(element/10);
+	             map.put(element/10, list);
+	             this.length++;
+	         }
+	      }
+	  }
    }
 
    @Override
@@ -75,11 +75,11 @@ public class IntSetBins implements IntSet {
          ArrayList<Integer> temp = map.get(list.get(i));
          
          temp.sort(new Comparator() {
-         @Override
-         public int compare(Object o1, Object o2) {
-            // TODO Auto-generated method stub
+			@Override
+			public int compare(Object o1, Object o2) {
+				// TODO Auto-generated method stub
                 return ((Comparable) o1).compareTo(o2);
-         }
+			}
          });
          
          finalList.addAll(temp);

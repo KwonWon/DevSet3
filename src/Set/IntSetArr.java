@@ -3,24 +3,31 @@ package Set;
 public class IntSetArr implements IntSet {
 	private int[] array;
 	private int length;
-	private int maxelems;
+	private int maxval;
 	
 	public IntSetArr() {
-		this.length = 0;
-		this.maxelems = 0;
+		length = 0;
+		maxval = 0;
 	}
 
 	@Override
 	public void intSetImp(int maxelems, int maxval) {
 		// TODO Auto-generated method stub
-		array = new int[maxval];
-		this.maxelems = maxelems;
+		array = new int[maxelems];
+		this.maxval = maxval;
 	}
 
 	@Override
 	public void insert(int element) {
 		// TODO Auto-generated method stub
-		array[length] = element;
+		if(length < array.length && element <= maxval) {
+			for(int i = 0; i < length; i++) {
+				if(array[i] == element)
+					return;
+			}
+			array[length] = element;
+			length ++;
+		}
 	}
 
 	@Override
@@ -39,7 +46,7 @@ public class IntSetArr implements IntSet {
 	
 	private void sort() {
 		for(int i = 0; i < array.length; i++) {
-			for(int j = 0; j < array.length - i; j++) {
+			for(int j = 0; j < array.length - i - 1; j++) {
 				if(array[j] > array[j+1]) {
 					int temp = array[j];
 					array[j] = array[j+1];

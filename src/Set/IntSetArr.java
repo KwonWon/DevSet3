@@ -1,4 +1,5 @@
 package Set;
+
 public class IntSetArr implements IntSet {
 	private int[] array;
 	private int length;
@@ -13,7 +14,7 @@ public class IntSetArr implements IntSet {
 	public void intSetImp(int maxelems, int maxval) {
 		// TODO Auto-generated method stub
 		array = new int[maxelems];
-		this.maxval = maxelems;
+		this.maxval = maxval;
 	}
 
 	@Override

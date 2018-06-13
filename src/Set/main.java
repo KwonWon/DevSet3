@@ -1,4 +1,5 @@
 package Set;
+
 import java.util.Random;
 
 public class main {
@@ -24,5 +25,4 @@ public class main {
 	    for (int i = 0; i < v.length; i++)
 	    	System.out.println(v[i] + " / line : " + i);
 	}
-
 }

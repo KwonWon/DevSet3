@@ -7,9 +7,10 @@ import java.util.HashMap;
 import java.util.List;
 
 public class IntSetBins implements IntSet {
-   private HashMap<Integer, Integer> map = new HashMap<>();
+   private HashMap<Integer, ArrayList<Integer>> map = new HashMap<>();
    private int maxelems;
    private int maxval;
+   private int length;
    
    public IntSetBins() {
       this.maxelems = 0;
@@ -21,47 +22,74 @@ public class IntSetBins implements IntSet {
       // TODO Auto-generated method stub
       this.maxelems = maxelems;
       this.maxval = maxval;
+      this.length = 0;
    }
 
    @Override
    public void insert(int element) {
       // TODO Auto-generated method stub
-      map.put(element / 10, element);
+	  if(this.maxval >= element && maxelems > length) { 
+	      if(!map.containsKey(element/10)) {
+	         ArrayList<Integer> list = new ArrayList<>();
+	         list.add(element);
+	         map.put(element/10, list);
+	         this.length++;
+	      }
+	      else {
+	         ArrayList<Integer> list = map.get(element/10);
+	         if(!list.contains(element)) {
+	             list.add(element);
+	             map.remove(element/10);
+	             map.put(element/10, list);
+	             this.length++;
+	         }
+	      }
+	  }
    }
 
    @Override
    public int size() {
       // TODO Auto-generated method stub
-      return map.get(0);
+      return this.length;
    }
 
    @Override
    public int[] report() {
       // TODO Auto-generated method stub
-      sort();
       
-      return null;
+      return sort();
    }
    
-   private void sort() {
+   private int[] sort() {
       List<Integer> list = new ArrayList();
       list.addAll(map.keySet());
       
-      int i = list.get(0);
-      
       Collections.sort(list, new Comparator() {
-         public int compare(Object a, Object b) {
-//            Object v1 = map.get(a);
-//            Object v2 = map.get(b);
-            
-            return ((Comparable) a).compareTo(b);
-         }
-      });
+            public int compare(Object a, Object b) {      
+               return ((Comparable) a).compareTo(b);
+            }
+         });
       
-//      for(int i = 0; i < list.size(); i++) {
-//         List<Integer> temp = new ArrayList();
-//         temp.addAll(map.get(list.get(i)));
-//      }
+      ArrayList<Integer> finalList = new ArrayList<>();
+      for(int i = 0; i < list.size(); i++) {
+         ArrayList<Integer> temp = map.get(list.get(i));
+         
+         temp.sort(new Comparator() {
+			@Override
+			public int compare(Object o1, Object o2) {
+				// TODO Auto-generated method stub
+                return ((Comparable) o1).compareTo(o2);
+			}
+         });
+         
+         finalList.addAll(temp);
+      }
+      
+      int[] returnValue = new int[finalList.size()];
+      for(int i = 0; i < returnValue.length; i++) {
+         returnValue[i] = finalList.get(i);
+      }
+      
+      return returnValue;
    }
-
 }

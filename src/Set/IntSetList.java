@@ -32,7 +32,7 @@ public class IntSetList implements IntSet {
 	@Override
 	public void insert(int element) {
 		// TODO Auto-generated method stub
-		if(size() < maxelems && element <= maxval) {
+		if(size() < maxelems && element <= maxval && !intList.contains(element)) {
 			intList.add(element);
 		}else {
 			

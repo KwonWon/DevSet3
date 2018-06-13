@@ -5,9 +5,11 @@ import org.junit.Test;
 import Set.IntSetList;
 
 public class IntSetListTest {
+	IntSetList S = new IntSetList();
+
+	final int bigNum = 10000;
 	
 	public IntSetListTest() {
-		IntSetList S = new IntSetList();
 		S.intSetImp(5, 100);
 		
 		S.insert(1);
@@ -19,6 +21,7 @@ public class IntSetListTest {
 
 	@Test
 	public void testIntSetImp() {
+		
 	}
 
 	@Test
@@ -37,16 +40,25 @@ public class IntSetListTest {
 	}
 
 	@Test
-	public void testSize() {
+	public void testSize() {	
+		assertEquals(5, S.size());
 	}
 
 	@Test
 	public void testReport() {
+		int[] compareSort = {1, 3, 5, 7, 10};
+		
+		assertArrayEquals(compareSort, S.report());
 	}
 	
-	@Test(timeout = 10000)
-	public void testTime() {
+	@Test
+	public void testP() {
+		IntSetList timeTest = new IntSetList();
+		timeTest.intSetImp(bigNum, bigNum);
 		
+		for(int idx = 0; idx < bigNum; idx++) {
+			timeTest.insert(idx);
+		}
 	}
 
 }

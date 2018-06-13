@@ -12,18 +12,17 @@ public class main {
 		
 		Random rand = new Random();
 		
-		IntSet S = new IntSetList();
+		IntSet S = new IntSetBins();
 	    
 		S.intSetImp(m, maxval);
-		
+
 		while (S.size() < m)
 			S.insert(rand.nextInt(maxval));
-	        
+		
 		v = S.report();
 	    
 	    for (int i = 0; i < v.length; i++)
-	    	System.out.println(v[i]);
-	
+	    	System.out.println(v[i] + " / line : " + i);
 	}
 
 }

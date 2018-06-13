@@ -2,25 +2,31 @@ package Set;
 public class IntSetArr implements IntSet {
 	private int[] array;
 	private int length;
-	private int maxelems;
+	private int maxval;
 	
 	public IntSetArr() {
 		length = 0;
-		maxelems = 0;
+		maxval = 0;
 	}
 
 	@Override
 	public void intSetImp(int maxelems, int maxval) {
 		// TODO Auto-generated method stub
-		array = new int[maxval];
-		this.maxelems = maxelems;
+		array = new int[maxelems];
+		this.maxval = maxelems;
 	}
 
 	@Override
 	public void insert(int element) {
 		// TODO Auto-generated method stub
-		array[length] = element;
-		length ++;
+		if(length < array.length && element <= maxval) {
+			for(int i = 0; i < length; i++) {
+				if(array[i] == element)
+					return;
+			}
+			array[length] = element;
+			length ++;
+		}
 	}
 
 	@Override

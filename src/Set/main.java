@@ -1,3 +1,5 @@
+package Set;
+
 import java.util.Random;
 
 public class main {
@@ -6,24 +8,18 @@ public class main {
 		// TODO Auto-generated method stub
 		int[] v;
 		
-		final int m = 50;
-		final int maxval = 100;
-		
 		Random rand = new Random();
 
-		IntSet S = new IntSetList();
+		IntSet S = new IntSetBins();
 	    
-		S.intSetImp(m, maxval);
-		
-		
-		while (S.size() < m)
-			S.insert(rand.nextInt(maxval));
+		S.intSetImp(50, 100);
+		while (S.size() < 100)
+			S.insert(rand.nextInt() % 50);
 	        
 		v = S.report();
 	    
 	    for (int i = 0; i < v.length; i++)
 	    	System.out.println(v[i]);
-	
 	}
 
 }
